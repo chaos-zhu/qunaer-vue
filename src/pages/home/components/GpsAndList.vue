@@ -1,18 +1,15 @@
 <template>
   <div>
-    首页
+    定位、榜单
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
-}
 
+}
 </script>
 
-<style>
-div{
-  color: aquamarine;
-}
+<style lang="scss">
+
 </style>

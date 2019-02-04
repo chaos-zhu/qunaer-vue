@@ -2,13 +2,16 @@
   <div class="home-header">
     <div class="h-goback"><i class="iconfont icon-left-arrow"></i></div>
     <div class="h-search"><i class="iconfont icon-sousuo"></i><input type="text" placeholder="输入城市/景点/游玩主题"></div>
-    <div class="h-position"><span>北京</span><i class="iconfont icon-xiala"></i></div>
+    <div class="h-position"><span>{{city}}</span><i class="iconfont icon-xiala"></i></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: String
+  }
 }
 </script>
 
@@ -61,10 +64,10 @@ export default {
     justify-content: space-around;
     color: white;
     span{
-      font-size: px2rem(16);
+      font-size: px2rem(15);
     }
     i{
-      font-size: px2rem(15);
+      font-size: px2rem(14);
     }
   }
 }

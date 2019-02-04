@@ -4,88 +4,20 @@
       <i class="iconfont icon-xinaixin"></i> <span>猜你喜欢</span>
     </div>
     <ul class="is-like-list">
-      <li>
+      <li v-for='item in guessList' :key='item.id'>
         <img
-          src="http://img1.qunarzz.com/sight/p0/1707/c7/c7f3baa7a5094e3ca3.img.jpg_200x200_1e7123ce.jpg"
-          alt="加载失败了~"
+          :src="item.imgUrl"
+          alt="item.id"
         />
         <div>
-          <h2>三亚海上观光巴士</h2>
+          <h2>{{item.title}}</h2>
           <p>
-            <span>⭐⭐⭐⭐⭐</span>
-            <b>18条评论</b>
+            <span>{{item.score}}</span>
+            <b>{{item.comment}}条评论</b>
           </p>
           <div>
-            <span>￥39.8</span>
-            <p>天涯区</p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://img1.qunarzz.com/sight/p0/1707/c7/c7f3baa7a5094e3ca3.img.jpg_200x200_1e7123ce.jpg"
-          alt="加载失败了~"
-        />
-        <div>
-          <h2>三亚海上观光巴士</h2>
-          <p>
-            <span>⭐⭐⭐⭐⭐</span>
-            <b>18条评论</b>
-          </p>
-          <div>
-            <span>￥39.8</span>
-            <p>天涯区</p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://img1.qunarzz.com/sight/p0/1707/c7/c7f3baa7a5094e3ca3.img.jpg_200x200_1e7123ce.jpg"
-          alt="加载失败了~"
-        />
-        <div>
-          <h2>三亚海上观光巴士</h2>
-          <p>
-            <span>⭐⭐⭐⭐⭐</span>
-            <b>18条评论</b>
-          </p>
-          <div>
-            <span>￥39.8</span>
-            <p>天涯区</p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://img1.qunarzz.com/sight/p0/1707/c7/c7f3baa7a5094e3ca3.img.jpg_200x200_1e7123ce.jpg"
-          alt="加载失败了~"
-        />
-        <div>
-          <h2>三亚海上观光巴士</h2>
-          <p>
-            <span>⭐⭐⭐⭐⭐</span>
-            <b>18条评论</b>
-          </p>
-          <div>
-            <span>￥39.8</span>
-            <p>天涯区</p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://img1.qunarzz.com/sight/p0/1707/c7/c7f3baa7a5094e3ca3.img.jpg_200x200_1e7123ce.jpg"
-          alt="加载失败了~"
-        />
-        <div>
-          <h2>三亚海上观光巴士</h2>
-          <p>
-            <span>⭐⭐⭐⭐⭐</span>
-            <b>18条评论</b>
-          </p>
-          <div>
-            <span>￥39.8</span>
-            <p>天涯区</p>
+            <span>￥{{item.price}}起</span>
+            <p>{{item.area}}</p>
           </div>
         </div>
       </li>
@@ -95,7 +27,10 @@
 
 <script>
 export default {
-
+  name: 'IsLike',
+  props: {
+    guessList: String
+  }
 }
 </script>
 

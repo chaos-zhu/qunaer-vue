@@ -3,37 +3,9 @@
     <div class='swiper-wrapper'>
       <div class='swiper-slide'>
         <ul class="option-1">
-          <li>
-            <img src='../../../assets/option/option-1.png' alt>
-            <span>景点门票</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-2.png' alt>
-            <span>本地玩乐</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-3.png' alt>
-            <span>自然风光</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-4.png' alt>
-            <span>一日游</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-5.png' alt>
-            <span>年终大促</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-6.png' alt>
-            <span>名胜古迹</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-7.png' alt>
-            <span>泡温泉</span>
-          </li>
-          <li>
-            <img src='../../../assets/option/option-8.gif' alt>
-            <span>必游之地</span>
+          <li v-for='item in iconList' :key='item.id'>
+            <img :src='item.imgUrl' alt='item.id'>
+            <span>{{item.desc}}</span>
           </li>
         </ul>
       </div>
@@ -60,15 +32,23 @@ import Swiper from 'swiper/dist/js/swiper.min.js'
 export default {
   name: 'Option',
   // import { mapMutations } from 'vuex';
-  mounted () {
-    // eslint-disable-next-line
-    new Swiper('.option', {
-      loop: false, // 循环模式选项
-      autoplay: false, // 自动播放
-      pagination: {
-        el: '.swiper-pagination'
-      }
-    })
+  props: {
+    iconList: Array
+  },
+  methods: {
+    getIconList () {
+      // eslint-disable-next-line
+      new Swiper('.option', {
+        loop: false, // 循环模式选项
+        autoplay: false, // 自动播放
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      })
+    }
+  },
+  updated () {
+    this.getIconList()
   }
 }
 </script>

@@ -2,23 +2,10 @@
   <!-- 轮播图 -->
   <div class='swiper-container banner'>
     <div class='swiper-wrapper'>
-      <div class='swiper-slide'>
-        <img src='../../../assets/banner/banner-1.jpg' alt>
-      </div>
-      <div class='swiper-slide'>
-        <img src='../../../assets/banner/banner-2.jpg' alt>
-      </div>
-      <div class='swiper-slide'>
-        <img src='../../../assets/banner/banner-3.jpg' alt>
-      </div>
-      <div class='swiper-slide'>
-        <img src='../../../assets/banner/banner-4.jpg' alt>
-      </div>
-      <div class='swiper-slide'>
-        <img src='../../../assets/banner/banner-5.jpg' alt>
-      </div>
-      <div class='swiper-slide'>
-        <img src='../../../assets/banner/banner-6.jpg' alt>
+      <div class='swiper-slide'
+      v-for='item in bannerImg'
+      :key='item.id'>
+        <img :src='item.imgUrl' :alt='item.id'>
       </div>
     </div>
     <!-- 分页器 -->
@@ -31,21 +18,29 @@ import Swiper from 'swiper/dist/js/swiper.min.js'
 // import { mapMutations } from 'vuex';
 export default {
   name: 'Banner',
+  props: {
+    bannerImg: Array
+  },
   data () {
     return {
       xxxx: ''
     }
   },
-  mounted () {
+  methods: {
+    newSwiper () {
     // eslint-disable-next-line
-    new Swiper('.banner', {
-      loop: true, // 循环模式选项
-      autoplay: true, // 自动播放
-      // 如果需要滚动条
-      pagination: {
-        el: '.swiper-pagination'
-      }
-    })
+      new Swiper('.banner', {
+        loop: true, // 循环模式选项
+        autoplay: true, // 自动播放
+        pagination: { // 指示器小圆点
+          el: '.swiper-pagination'
+        }
+      })
+    }
+  },
+  updated () {
+    // 数据更新后调用，否则轮播图不能正确渲染
+    this.newSwiper()
   }
 }
 </script>

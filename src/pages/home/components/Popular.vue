@@ -39,7 +39,7 @@ export default {
 <style lang='scss'>
 @import '../../../assets/styles/px2rem.scss';
 .p-wrap {
-  height: px2rem(190);
+  min-height: px2rem(190);
   background-color: #eee;
   padding: px2rem(10) 0;
   .p-container {
@@ -70,7 +70,7 @@ export default {
       }
     }
     .p-hot-content {
-      max-height: px2rem(140);
+      min-height: px2rem(140);
       overflow-x: scroll;
       display: flex;
       li {

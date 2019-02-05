@@ -1,8 +1,10 @@
 <template>
   <div class="home-header">
-    <div class="h-goback"><i class="iconfont icon-left-arrow"></i></div>
+    <div class="h-goback"><i class="iconfont icon-icon-test"></i></div>
     <div class="h-search"><i class="iconfont icon-sousuo"></i><input type="text" placeholder="输入城市/景点/游玩主题"></div>
-    <div class="h-position"><span>{{city}}</span><i class="iconfont icon-xiala"></i></div>
+    <router-link to="/city">
+      <div class="h-position"><span>{{city}}</span><i class="iconfont icon-xiala"></i></div>
+    </router-link>
   </div>
 </template>
 
@@ -35,7 +37,7 @@ export default {
     }
   }
   .h-search{
-    width: px2rem(333);
+    flex: 1;
     height: px2rem(30);
     border-radius: px2rem(3);
     background-color: white;
@@ -52,13 +54,17 @@ export default {
       font-size: px2rem(16);
       height: 100%;
       color: gray;
+      outline: none;
+      background-color: rgba(0, 0, 0, 0);
+      border: 0;
     }
     input::-webkit-input-placeholder {
     color: #e2dfdf;
     }
   }
   .h-position{
-    width: px2rem(66);
+    min-width: px2rem(60);
+    margin-left: px2rem(5);
     display: flex;
     align-items: center;
     justify-content: space-around;

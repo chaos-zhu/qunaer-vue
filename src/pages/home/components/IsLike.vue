@@ -29,7 +29,7 @@
 export default {
   name: 'IsLike',
   props: {
-    guessList: String
+    guessList: Array
   }
 }
 </script>

@@ -20,6 +20,7 @@
       <dl class="all-city-container"
         v-for="(val, key) in cities"
         :key="key"
+        :ref="key"
       >
         <dt class="h2-title">{{key}}</dt>
         <dd class="border-bottom"
@@ -37,12 +38,23 @@ export default {
   name: 'CityArea',
   props: {
     hotCities: Array,
-    cities: Object
+    cities: Object,
+    letter: String
   },
   created () {
     this.$nextTick(() => {
       this.Bscroll = new Bscroll(this.$refs.cityWrap)
     })
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        var element = this.$refs[this.letter][0]
+        // console.log(e)
+        // 实例化后的Bscroll有一个scrollToElement方法，可以直接类似于锚点链接的跳转
+        this.Bscroll.scrollToElement(element, 300)
+      }
+    }
   }
 }
 </script>

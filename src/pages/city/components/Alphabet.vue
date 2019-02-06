@@ -3,6 +3,7 @@
     <li
       v-for="(val, key) in cities"
       :key="key"
+      @click="showCity(key)"
     >
       {{key}}
     </li>
@@ -16,7 +17,14 @@ export default {
     cities: Object
   },
   mounted () {
-    console.log(this.cities)
+    // console.log(this.cities)
+  },
+  methods: {
+    showCity: function (key) {
+      // console.log(e.target.innerText)
+      // console.log(key)
+      this.$emit('change', key)
+    }
   }
 }
 </script>
@@ -24,6 +32,7 @@ export default {
 <style lang='scss'>
 @import '../../../assets/styles/px2rem.scss';
 .alphabet-container{
+  touch-action: none;
   position: fixed;
   right: 0;
   top: 0;

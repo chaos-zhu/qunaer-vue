@@ -1,8 +1,22 @@
 <template>
   <div class="city">
-    <Header></Header>
-    <city-area :hotCities='hotCities' :cities='cities'></city-area>
-    <Alphabet :cities='cities'></Alphabet>
+    <Header
+    :cities='cities'
+    >
+    </Header>
+
+    <city-area
+    :hotCities='hotCities'
+    :cities='cities'
+    :letter="letter"
+    >
+    </city-area>
+
+    <Alphabet
+    :cities='cities'
+    @change="receiveKey"
+    >
+    </Alphabet>
   </div>
 </template>
 
@@ -21,7 +35,8 @@ export default {
   data () {
     return {
       hotCities: [],
-      cities: {}
+      cities: {},
+      letter: ''
     }
   },
   mounted () {
@@ -38,6 +53,9 @@ export default {
         this.hotCities = res.data.hotCities
         this.cities = res.data.cities
       }
+    },
+    receiveKey: function (key) {
+      this.letter = key
     }
   }
 }

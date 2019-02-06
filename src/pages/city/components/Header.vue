@@ -3,14 +3,51 @@
     <div class='c-header'>
       <router-link to="/"><i class='iconfont icon-left-arrow go-home'></i></router-link>
       <span>选择城市</span>
-      <input type="text" placeholder="输入城市名或拼音">
+      <input type="text" placeholder="输入城市名或拼音" v-model="serchKey">
     </div>
+    <serch-result
+      v-show="serchKey.length"
+      :serchResult="serchResult"
+    ></serch-result>
   </div>
 </template>
 
 <script>
+import SerchResult from './SerchResult.vue'
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+    SerchResult
+  },
+  props: {
+    cities: Object
+  },
+  data () {
+    return {
+      serchKey: '',
+      serchResult: [],
+      timmer: null
+    }
+  },
+  watch: {
+    serchKey () {
+      if (this.timmer) {
+        clearTimeout(this.timmer)
+      }
+      this.timmer = setTimeout(() => {
+        var result = []
+        for (let key in this.cities) {
+          this.cities[key].forEach(item => {
+            if (item.spell.indexOf(this.serchKey) > -1 || item.name.indexOf(this.serchKey) > -1) {
+              result.push(item)
+            }
+          })
+        }
+        this.serchResult = result
+        // console.log(result)
+      }, 200)
+    }
+  }
 }
 </script>
 
@@ -22,6 +59,8 @@ export default {
   z-index: 999;
   height: px2rem(72);
   background-color: #00bcd4;
+  display: flex;
+  flex-direction: column;
   .c-header{
     position: relative;
     display: flex;
@@ -40,7 +79,7 @@ export default {
       margin: px2rem(10) 0;
     }
     input{
-      width: 85%;
+      width: 90%;
       height: px2rem(26);
       border-radius: px2rem(5);
       font-size: px2rem(15);

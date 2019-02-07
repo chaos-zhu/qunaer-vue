@@ -17,6 +17,7 @@ import GpsAndList from './components/GpsAndList'
 import Popular from './components/Popular'
 import IsLike from './components/IsLike'
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -32,15 +33,16 @@ export default {
       bannerImg: [],
       iconList: [],
       recommendList: [],
-      guessList: []
+      guessList: [],
+      lastCity: ''
     }
   },
-  mounted () {
-    this.getIndexData()
+  computed: {
+    ...mapState(['curCity'])
   },
   methods: {
     getIndexData () {
-      axios.get('/api/index.json')
+      axios.get(`/api/index.json?city=${this.curCity}`)
         .then(this.getIdenxData)
     },
     getIdenxData (result) {
@@ -49,6 +51,16 @@ export default {
       this.iconList = res.data.iconList
       this.recommendList = res.data.recommendList
       this.guessList = res.data.guessList
+    }
+  },
+  mounted () {
+    this.getIndexData()
+    this.lastCity = this.curCity
+  },
+  activated () {
+    if (this.lastCity !== this.curCity) {
+      this.getIndexData()
+      this.lastCity = this.curCity
     }
   }
 }

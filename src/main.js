@@ -10,6 +10,8 @@ import 'swiper/dist/css/swiper.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import Vuejsonp from 'vue-jsonp'
+
 import App from './App'
 import fastClick from 'fastclick'
 import './assets/styles/reset.css'
@@ -19,6 +21,7 @@ import './assets/styles/border.css'
 // 引入ele.UI后使用中间件，即注册组件
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper, {})
+Vue.use(Vuejsonp)
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)

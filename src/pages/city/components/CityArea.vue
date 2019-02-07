@@ -4,8 +4,9 @@
     <div>
       <dl class='common-city-container'>
         <dt class='h2-title'>当前城市</dt>
-        <dd class='cur-city common-city'>{{this.curCity}}</dd>
+        <router-link to="/" tag="dd" class='cur-city common-city'>{{this.curCity}}</router-link>
       </dl>
+
       <dl class='common-city-container'>
         <dt class='h2-title'>热门城市</dt>
         <dd
@@ -46,7 +47,9 @@ export default {
   },
   created () {
     this.$nextTick(() => {
-      this.Bscroll = new Bscroll(this.$refs.cityWrap)
+      this.Bscroll = new Bscroll(this.$refs.cityWrap, {
+        click: true
+      })
     })
   },
   watch: {

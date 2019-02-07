@@ -44,7 +44,7 @@ export default {
   justify-content: center;
   li{
     font-size: px2rem(15);
-    padding: px2rem(2);
+    padding: px2rem(1) px2rem(2);
     color: #00bcd4;
     background-color: #FFFFF0;
   }

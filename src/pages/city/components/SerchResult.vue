@@ -25,7 +25,8 @@ export default {
   updated () {
     this.$nextTick(() => {
       this.Bscroll = new Bscroll(this.$refs.wrapper, {
-        bounceTime: 300
+        bounceTime: 300,
+        click: true
       })
     })
   },

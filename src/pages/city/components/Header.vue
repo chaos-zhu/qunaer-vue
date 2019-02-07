@@ -46,6 +46,9 @@ export default {
         this.serchResult = result
       }, 200)
     }
+  },
+  activated: function () {
+    this.serchKey = ''
   }
 }
 </script>

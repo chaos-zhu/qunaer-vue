@@ -10,10 +10,25 @@
 
 <script>
 import { mapState } from 'vuex'
+// import axios from 'axios'
 export default {
   name: 'HomeHeader',
   computed: {
     ...mapState(['curCity'])
+  },
+  methods: {
+    getCityName () {
+      if (this.curCity === '定位中...') {
+        this.$jsonp('//api.map.baidu.com/location/ip?ak=30tm8wTH4b2COhbq7B7y65yVU6z1qIgU')
+          .then((res) => {
+            this.$store.commit('changeCity', res.content.address_detail.city)
+            localStorage.curCity = this.curCity
+          })
+      }
+    }
+  },
+  created () {
+    this.getCityName()
   }
 }
 </script>

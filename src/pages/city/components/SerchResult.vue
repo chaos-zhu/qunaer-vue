@@ -4,6 +4,7 @@
     <li
       v-for="item in serchResult"
       :key="item.id"
+      @click='selectCity(item.name)'
        class="border-bottom"
     >
       {{item.name}}
@@ -15,6 +16,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'SerchResult',
   props: {
@@ -29,9 +31,16 @@ export default {
   },
   computed: {
     serchResultLength () {
-      console.log(this.serchResult.length)
       return this.serchResult.length
     }
+  },
+  methods: {
+    selectCity: function (city) {
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

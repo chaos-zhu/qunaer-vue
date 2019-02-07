@@ -1,16 +1,13 @@
 <template>
   <ul class='gps-and-list'>
-    <li class="l-border-right"><i class="iconfont icon-location"></i><span>{{city}}周边</span></li>
+    <li class="l-border-right"><i class="iconfont icon-location"></i><span>{{this.$store.state.curCity}}周边</span></li>
     <li><i class="iconfont icon-icon-test"></i><span>必游榜单</span></li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'GpsAndList',
-  props: {
-    city: String
-  }
+  name: 'GpsAndList'
 }
 </script>
 

@@ -44,7 +44,6 @@ export default {
           })
         }
         this.serchResult = result
-        // console.log(result)
       }, 200)
     }
   }

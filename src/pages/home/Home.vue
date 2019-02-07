@@ -1,9 +1,9 @@
 <template>
   <div class='home'>
-    <home-header :city='city' />
+    <home-header/>
     <banner :bannerImg='bannerImg' />
     <Option :iconList='iconList' />
-    <gps-and-list :city='city' />
+    <gps-and-list />
     <popular :recommendList='recommendList' />
     <is-like :guessList='guessList'/>
   </div>
@@ -29,7 +29,6 @@ export default {
   },
   data () {
     return {
-      city: '定位中...',
       bannerImg: [],
       iconList: [],
       recommendList: [],
@@ -46,7 +45,6 @@ export default {
     },
     getIdenxData (result) {
       var res = result.data
-      this.city = res.city
       this.bannerImg = res.data.swiperList
       this.iconList = res.data.iconList
       this.recommendList = res.data.recommendList

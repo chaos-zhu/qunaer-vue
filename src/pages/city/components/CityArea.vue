@@ -1,31 +1,33 @@
 <template>
 <!-- ref写在最外层的Dom元素上 -->
-  <div class='c-city-area' ref="cityWrap">
+  <div class='c-city-area' ref='cityWrap'>
     <div>
-      <dl class="common-city-container">
-        <dt class="h2-title">当前城市</dt>
-        <dd class="cur-city common-city">北京</dd>
+      <dl class='common-city-container'>
+        <dt class='h2-title'>当前城市</dt>
+        <dd class='cur-city common-city'>{{this.curCity}}</dd>
       </dl>
-      <dl class="common-city-container">
-        <dt class="h2-title">热门城市</dt>
+      <dl class='common-city-container'>
+        <dt class='h2-title'>热门城市</dt>
         <dd
-        class="common-city"
-        v-for="item in hotCities"
-        :key="item.id"
+        class='common-city'
+        v-for='item in hotCities'
+        :key='item.id'
+        @click='selectCity(item.name)'
         >
           {{item.name}}
         </dd>
       </dl>
 
-      <dl class="all-city-container"
-        v-for="(val, key) in cities"
-        :key="key"
-        :ref="key"
+      <dl class='all-city-container'
+        v-for='(val, key) in cities'
+        :key='key'
+        :ref='key'
       >
-        <dt class="h2-title">{{key}}</dt>
-        <dd class="border-bottom"
-          v-for="item in val"
-          :key="item.id"
+        <dt class='h2-title'>{{key}}</dt>
+        <dd class='border-bottom'
+          v-for='item in val'
+          :key='item.id'
+          @click='selectCity(item.name)'
         >{{item.name}}</dd>
       </dl>
     </div>
@@ -34,6 +36,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityArea',
   props: {
@@ -55,6 +58,17 @@ export default {
         this.Bscroll.scrollToElement(element, 300)
       }
     }
+  },
+  computed: {
+    ...mapState(['curCity'])
+  },
+  methods: {
+    selectCity: function (city) {
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>
@@ -72,6 +86,7 @@ export default {
   }
   .common-city-container{
     overflow: hidden;
+    touch-action: none;
   }
   .common-city{
     width: px2rem(95);

@@ -33,11 +33,11 @@ export default {
   background: rgba(#666, #333, #999, 0.5);
 }
 #nprogress .bar {
-    background: red !important;
+    background: green !important;
     height: px2rem(5);
   }
 #nprogress .spinner-icon{
     border-color: white!important;
-    border-left-color: red!important;
+    border-left-color: green!important;
   }
 </style>

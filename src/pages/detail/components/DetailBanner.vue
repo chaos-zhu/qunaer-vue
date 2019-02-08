@@ -72,7 +72,6 @@ export default {
       var opacity = top / 288
       opacity = opacity > 1 ? 1 : opacity
       this.headerStyle.opacity = opacity
-      console.log(123)
       if (top >= 1) {
         this.showHeader = true
       } else {

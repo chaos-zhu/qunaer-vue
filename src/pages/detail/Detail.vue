@@ -21,6 +21,7 @@ export default {
     }
   },
   activated () {
+    document.documentElement.scrollTop = 0
     this.getId()
   },
   methods: {

@@ -81,6 +81,7 @@ export default {
     this.lastCity = this.curCity
   },
   activated () {
+    document.documentElement.scrollTop = 0
     if (this.lastCity !== this.curCity) {
       this.getIndexData()
       this.lastCity = this.curCity
@@ -95,7 +96,7 @@ export default {
 </script>
 
 <style>
-div{
+.home{
   color: aquamarine;
 }
 </style>

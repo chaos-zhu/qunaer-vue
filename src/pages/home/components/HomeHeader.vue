@@ -1,7 +1,7 @@
 <template>
   <div class="home-header">
     <div class="h-goback"><i class="iconfont icon-icon-test"></i></div>
-    <div class="h-search"><i class="iconfont icon-sousuo"></i><input type="text" placeholder="输入城市/景点/游玩主题"></div>
+    <div class="h-search"><i class="iconfont icon-sousuo"></i><input type="text" disabled placeholder="输入城市/景点/游玩主题"></div>
     <router-link to="/city">
       <div class="h-position"><span>{{this.curCity}}</span><i class="iconfont icon-xiala"></i></div>
     </router-link>

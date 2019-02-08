@@ -10,7 +10,10 @@ import 'swiper/dist/css/swiper.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+// 在vue中使用jsonp跨域
 import Vuejsonp from 'vue-jsonp'
+
+import animate from 'animate.css'
 
 import App from './App'
 import fastClick from 'fastclick'
@@ -22,6 +25,7 @@ import './assets/styles/border.css'
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper, {})
 Vue.use(Vuejsonp)
+Vue.use(animate)
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)

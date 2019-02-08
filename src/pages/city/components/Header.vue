@@ -5,10 +5,18 @@
       <span>选择城市</span>
       <input type="text" placeholder="输入城市名或拼音" v-model="serchKey">
     </div>
-    <serch-result
-      v-show="serchKey.length"
-      :serchResult="serchResult"
-    ></serch-result>
+    <transition
+      mode="out-in"
+      appear
+      :duration="100"
+      enter-active-class="animated fadeInUp"
+      leave-active-class="animated fadeOutDown"
+    >
+      <serch-result
+        v-show="serchKey.length"
+        :serchResult="serchResult"
+      ></serch-result>
+    </transition>
   </div>
 </template>
 

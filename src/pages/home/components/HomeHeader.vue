@@ -1,8 +1,6 @@
 <template>
   <div class="home-header">
     <div class="h-goback"><p :style="transformStyle" @click="ctrlRotate"><i class="iconfont icon-vynil"></i></p></div>
-     <audio src="http://fs.w.kugou.com/201902081538/4d38546f8d7b127bfdec888338a42c12/G058/M01/1E/17/2oYBAFcZfXSAFkgUABo3MIGxzk8960.mp3" ref="music">
-     </audio>
     <div class="h-search"><i class="iconfont icon-sousuo"></i><input type="text" disabled placeholder="输入城市/景点/游玩主题"></div>
     <router-link to="/city">
       <div class="h-position"><span>{{this.curCity}}</span><i class="iconfont icon-xiala"></i></div>
@@ -40,7 +38,8 @@ export default {
     },
     musicTransfrom () {
       this.$nextTick(() => {
-        this.$refs.music.play()
+        var audio = document.getElementById('audio')
+        audio.play()
       })
       this.timer = setInterval(() => {
         this.deg += 10
@@ -48,10 +47,11 @@ export default {
       }, 80)
     },
     ctrlRotate: function () {
+      var audio = document.getElementById('audio')
       this.isRotate = !this.isRotate
       if (this.timer) {
         clearInterval(this.timer)
-        this.$refs.music.pause()
+        audio.pause()
       }
       if (this.isRotate) {
         this.musicTransfrom()
@@ -63,10 +63,6 @@ export default {
   },
   mounted () {
     this.getCityName()
-  },
-  deactivated () {
-    clearInterval(this.timer)
-    this.isRotate = false
   }
 }
 </script>

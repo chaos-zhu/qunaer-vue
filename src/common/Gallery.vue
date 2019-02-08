@@ -1,5 +1,5 @@
 <template>
-  <div class="gallary-container" @click="cancelGallary">
+  <div class="gallery-container" @click="cancelGallery">
     <div class="swiper-container ga-content">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item, index) in imgList" :key="index">
@@ -14,13 +14,13 @@
 <script>
 import Swiper from 'swiper'
 export default {
-  name: 'Gallary',
+  name: 'Gallery',
   props: {
     imgList: Array
   },
   methods: {
-    cancelGallary: function () {
-      this.$emit('cancelGallary')
+    cancelGallery: function () {
+      this.$emit('cancelGallery')
     }
   },
   mounted () {
@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/styles/px2rem.scss';
-.gallary-container{
+.gallery-container{
   position: fixed;
   top: 0;
   right: 0;

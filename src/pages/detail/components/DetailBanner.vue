@@ -22,11 +22,11 @@
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut"
     >
-      <gallary
-      v-if='showGallary'
-      @cancelGallary='cancelGallary'
+      <gallery
+      v-if='showGallery'
+      @cancelGallery='cancelGallery'
       :imgList='imgList'
-      ></gallary>
+      ></gallery>
     </transition>
 
   </div>
@@ -34,14 +34,14 @@
 
 <script>
 import Swiper from 'swiper'
-import Gallary from '@/common/Gallary'
+import Gallery from '@/common/Gallery'
 import DetailHeader from './DetailHeader'
 import { mapState } from 'vuex'
 export default {
   name: 'DetailBanner',
   data () {
     return {
-      showGallary: false,
+      showGallery: false,
       imgList: ['//img1.qunarzz.com/sight/p0/1604/90/900c47b803dc8f990.img.jpg_600x330_cb44785e.jpg', 'http://img1.qunarzz.com/sight/p0/1604/24/24e8c9405d04d92390.img.jpg_r_800x800_440ff8ba.jpg', '//img1.qunarzz.com/sight/p0/1604/bc/bc74b17c62f3306190.img.jpg_r_800x800_fe64a554.jpg'],
       showHeader: false,
       headerStyle: {
@@ -50,7 +50,7 @@ export default {
     }
   },
   components: {
-    Gallary,
+    Gallery,
     DetailHeader
   },
   computed: {
@@ -62,10 +62,10 @@ export default {
       this.$router.go(-1)
     },
     seeBigBanner: function () {
-      this.showGallary = true
+      this.showGallery = true
     },
-    cancelGallary: function () {
-      this.showGallary = false
+    cancelGallery: function () {
+      this.showGallery = false
     },
     handleScrool: function () {
       var top = document.documentElement.scrollTop

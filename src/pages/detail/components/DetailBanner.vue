@@ -1,7 +1,8 @@
 // 详情页轮播图
 <template>
   <div class="detail-banner-container">
-    <div class="de-go-home" @click="goBack"><i class="iconfont icon-left-arrow"></i></div>
+    <div class="de-go-back" @click="goBack" v-show="!showHeader"><i class="iconfont icon-left-arrow"></i></div>
+    <detail-header :style="headerStyle" v-show="showHeader"></detail-header>
     <div class="swiper-container de-banner">
       <div class="swiper-wrapper">
         <div class="swiper-slide" @click="seeBigBanner" v-for="(item, index) in imgList" :key="index">
@@ -34,17 +35,23 @@
 <script>
 import Swiper from 'swiper'
 import Gallary from '@/common/Gallary'
+import DetailHeader from './DetailHeader'
 import { mapState } from 'vuex'
 export default {
   name: 'DetailBanner',
   data () {
     return {
       showGallary: false,
-      imgList: ['//img1.qunarzz.com/sight/p0/1604/90/900c47b803dc8f990.img.jpg_600x330_cb44785e.jpg', 'http://img1.qunarzz.com/sight/p0/1604/24/24e8c9405d04d92390.img.jpg_r_800x800_440ff8ba.jpg', '//img1.qunarzz.com/sight/p0/1604/bc/bc74b17c62f3306190.img.jpg_r_800x800_fe64a554.jpg']
+      imgList: ['//img1.qunarzz.com/sight/p0/1604/90/900c47b803dc8f990.img.jpg_600x330_cb44785e.jpg', 'http://img1.qunarzz.com/sight/p0/1604/24/24e8c9405d04d92390.img.jpg_r_800x800_440ff8ba.jpg', '//img1.qunarzz.com/sight/p0/1604/bc/bc74b17c62f3306190.img.jpg_r_800x800_fe64a554.jpg'],
+      showHeader: false,
+      headerStyle: {
+        opacity: 1
+      }
     }
   },
   components: {
-    Gallary
+    Gallary,
+    DetailHeader
   },
   computed: {
     ...mapState(['curCity'])
@@ -59,11 +66,27 @@ export default {
     },
     cancelGallary: function () {
       this.showGallary = false
+    },
+    handleScrool: function () {
+      var top = document.documentElement.scrollTop
+      var opacity = top / 288
+      opacity = opacity > 1 ? 1 : opacity
+      this.headerStyle.opacity = opacity
+      console.log(123)
+      if (top >= 1) {
+        this.showHeader = true
+      } else {
+        this.showHeader = false
+      }
     }
   },
   activated () {
     // eslint-disable-next-line
     new Swiper('.de-banner')
+    window.addEventListener('scroll', this.handleScrool)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScrool)
   }
 }
 </script>
@@ -72,7 +95,7 @@ export default {
 @import '../../../assets/styles/px2rem.scss';
 .detail-banner-container{
   position: relative;
-  .de-go-home{
+  .de-go-back{
     width: px2rem(35);
     height: px2rem(35);
     line-height: px2rem(30);

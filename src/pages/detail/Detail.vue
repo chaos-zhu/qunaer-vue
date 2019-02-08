@@ -2,6 +2,7 @@
   <div>
     <detail-banner></detail-banner>
     <detail-recursion></detail-recursion>
+    <div style="height:2000px"></div>
   </div>
 </template>
 

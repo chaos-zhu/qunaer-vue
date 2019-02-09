@@ -1,7 +1,7 @@
 <template>
   <div class='home'>
     <home-header />
-    <banner :bannerImg='bannerImg' />
+    <banner :bannerImg.sync='bannerImg' />
     <Option :iconList='iconList' />
     <gps-and-list />
     <popular :recommendList='recommendList' />
@@ -81,6 +81,7 @@ export default {
     this.lastCity = this.curCity
   },
   activated () {
+    document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
     if (this.lastCity !== this.curCity) {
       this.getIndexData()

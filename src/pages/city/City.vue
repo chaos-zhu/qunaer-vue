@@ -15,8 +15,15 @@
     <Alphabet
     :cities='cities'
     @change="receiveKey"
+    @touchStatus='isTouch'
     >
     </Alphabet>
+
+    <show-letter
+      :letter="letter"
+      :touchStatus='touchStatus'
+    >
+    </show-letter>
   </div>
 </template>
 
@@ -24,19 +31,22 @@
 import Header from './components/Header.vue'
 import CityArea from './components/CityArea.vue'
 import Alphabet from './components/Alphabet.vue'
+import ShowLetter from './components/ShowLetter'
 import axios from 'axios'
 export default {
   name: 'City',
   components: {
     Header,
     CityArea,
-    Alphabet
+    Alphabet,
+    ShowLetter
   },
   data () {
     return {
       hotCities: [],
       cities: {},
-      letter: ''
+      letter: '',
+      touchStatus: false
     }
   },
   mounted () {
@@ -54,8 +64,12 @@ export default {
         this.cities = res.data.cities
       }
     },
-    receiveKey: function (key) {
+    receiveKey: function (key, touchStatus) {
       this.letter = key
+      this.touchStatus = touchStatus
+    },
+    isTouch: function (touchStatus) {
+      this.touchStatus = touchStatus
     }
   }
 }

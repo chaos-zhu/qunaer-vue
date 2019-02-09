@@ -3,7 +3,11 @@
     <li
       v-for="(val, key) in cities"
       :key="key"
+      :ref="key"
       @click="showCity(key)"
+      @touchstart.prevent='handleTouchStart'
+      @touchmove='handleTouchMove'
+      @touchend='handleTouchEnd'
     >
       {{key}}
     </li>
@@ -16,14 +20,51 @@ export default {
   props: {
     cities: Object
   },
-  mounted () {
-    // console.log(this.cities)
+  data () {
+    return {
+      touchStatus: false,
+      startY: 0,
+      timer: null
+    }
+  },
+  computed: {
+    letters: function () {
+      var letters = []
+      for (let i in this.cities) {
+        letters.push(i)
+      }
+      return letters
+    }
+  },
+  updated () {
+    this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
     showCity: function (key) {
       // console.log(e.target.innerText)
       // console.log(key)
       this.$emit('change', key)
+    },
+    handleTouchStart: function () {
+      this.touchStatus = true
+    },
+    handleTouchMove: function (e) {
+      if (this.touchStatus) {
+        if (this.timer) {
+          clearTimeout(this.timer)
+        }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY
+          const index = Math.floor((touchY - this.startY) / 16)
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index], this.touchStatus)
+          }
+        }, 16)
+      }
+    },
+    handleTouchEnd: function () {
+      this.touchStatus = false
+      this.$emit('touchStatus', this.touchStatus)
     }
   }
 }

@@ -39,8 +39,15 @@ export default {
     }
   },
   updated () {
-    // 数据更新后调用，否则轮播图不能正确渲染
+    // 数据更新后实例化，否则轮播图不能正确渲染
     this.newSwiper()
+  },
+  activated () {
+    // 使用keep-alive优化后，从其他组件切回home再实例化一次，否则轮播图不能正确渲染
+    // this.$nextTick(() => {
+    //   this.newSwiper()
+    //   console.log(this.bannerImg)
+    // })
   }
 }
 </script>

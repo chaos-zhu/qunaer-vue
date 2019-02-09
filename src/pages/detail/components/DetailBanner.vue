@@ -68,8 +68,9 @@ export default {
       this.showGallery = false
     },
     handleScrool: function () {
-      var top = document.documentElement.scrollTop
-      var opacity = top / 288
+      var top = document.body.scrollTop || document.documentElement.scrollTop
+      // console.log(document.body.scrollTop, document.documentElement.scrollTop)
+      var opacity = top / 230
       opacity = opacity > 1 ? 1 : opacity
       this.headerStyle.opacity = opacity
       if (top >= 1) {
@@ -82,6 +83,8 @@ export default {
   activated () {
     // eslint-disable-next-line
     new Swiper('.de-banner')
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
     window.addEventListener('scroll', this.handleScrool)
   },
   deactivated () {

@@ -34,16 +34,19 @@ export default {
         autoplay: true, // 自动播放
         pagination: { // 指示器小圆点
           el: '.home-banner-pagination'
+        },
+        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, // 修改swiper的父元素时，自动初始化swiper
+        onSlideChangeEnd: function (swiper) {
+          swiper.update()
         }
       })
     }
   },
   updated () {
-    // 数据更新后实例化，否则轮播图不能正确渲染
     this.newSwiper()
   },
   activated () {
-    // 使用keep-alive优化后，从其他组件切回home再实例化一次，否则轮播图不能正确渲染
     // this.$nextTick(() => {
     //   this.newSwiper()
     //   console.log(this.bannerImg)

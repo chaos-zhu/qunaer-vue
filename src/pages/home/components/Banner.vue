@@ -34,12 +34,13 @@ export default {
         autoplay: true, // 自动播放
         pagination: { // 指示器小圆点
           el: '.home-banner-pagination'
-        },
-        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, // 修改swiper的父元素时，自动初始化swiper
-        onSlideChangeEnd: function (swiper) {
-          swiper.update()
         }
+        // ,
+        // observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+        // observeParents: true, // 修改swiper的父元素时，自动初始化swiper
+        // onSlideChangeEnd: function (swiper) {
+        //   swiper.update()
+        // }
       })
     }
   },

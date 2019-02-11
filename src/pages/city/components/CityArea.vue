@@ -45,7 +45,7 @@ export default {
     cities: Object,
     letter: String
   },
-  created () {
+  activated () {
     this.$nextTick(() => {
       this.Bscroll = new Bscroll(this.$refs.cityWrap, {
         click: true

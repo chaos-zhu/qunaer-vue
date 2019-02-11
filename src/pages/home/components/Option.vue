@@ -12,11 +12,11 @@
       <div class='swiper-slide'>
         <ul class="option-2">
           <li>
-            <img src='../../../assets/option/option-1.png' alt>
+            <img src='@/assets/option/option-1.png' alt>
             <span>著名景点</span>
           </li>
           <li>
-            <img src='../../../assets/option/option-2.png' alt>
+            <img src='@/assets/option/option-2.png' alt>
             <span>全部玩乐</span>
           </li>
         </ul>

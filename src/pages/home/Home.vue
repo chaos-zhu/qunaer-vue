@@ -34,7 +34,8 @@ export default {
       iconList: [],
       recommendList: [],
       guessList: [],
-      lastCity: ''
+      lastCity: '',
+      loading: null
     }
   },
   computed: {
@@ -42,15 +43,19 @@ export default {
   },
   methods: {
     getIndexData () {
-      axios.get(`/api/index.json?city=${this.curCity}`)
+      this.loading = this.$loading({
+        text: '由于服务器太过高级，首页数据请求较慢，请稍等片刻~'
+      })
+      axios.get(`//157.230.145.159:3000/index?city=${this.curCity}`)
         .then(this.getIdenxData)
     },
     getIdenxData (result) {
-      var res = result.data
+      var res = result.data[0]
       this.bannerImg = res.data.swiperList
       this.iconList = res.data.iconList
       this.recommendList = res.data.recommendList
       this.guessList = res.data.guessList
+      this.loading.close()
     }
     // handleScroll () {
     //   var top = document.documentElement.scrollTop

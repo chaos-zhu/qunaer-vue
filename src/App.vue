@@ -12,7 +12,7 @@
       </keep-alive>
     </transition>
     <audio
-      src="http://fs.w.kugou.com/201902081538/4d38546f8d7b127bfdec888338a42c12/G058/M01/1E/17/2oYBAFcZfXSAFkgUABo3MIGxzk8960.mp3"
+      src="/qunaer/static/mp3/gongxiami.mp3"
       loop
       id="audio"
      >

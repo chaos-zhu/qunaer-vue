@@ -9,6 +9,7 @@
     :hotCities='hotCities'
     :cities='cities'
     :letter="letter"
+    class="cityarea"
     >
     </city-area>
 
@@ -32,6 +33,7 @@ import Header from './components/Header.vue'
 import CityArea from './components/CityArea.vue'
 import Alphabet from './components/Alphabet.vue'
 import ShowLetter from './components/ShowLetter'
+// import { Loading } from 'element-ui'
 import axios from 'axios'
 export default {
   name: 'City',
@@ -46,23 +48,25 @@ export default {
       hotCities: [],
       cities: {},
       letter: '',
-      touchStatus: false
+      touchStatus: false,
+      loading: null
     }
-  },
-  mounted () {
-    this.getCityData()
   },
   methods: {
     getCityData: function () {
-      axios.get('/api/city.json')
+      this.loading = this.$loading({
+        text: '城市数据首次加载较慢，先欣赏公虾米~'
+      })
+      axios.get('//157.230.145.159:3000/city')
         .then(this.getCityDataSucc)
     },
     getCityDataSucc: function (result) {
-      var res = result.data
+      var res = result.data[0]
       if (res.ret === true) {
         this.hotCities = res.data.hotCities
         this.cities = res.data.cities
       }
+      this.loading.close()
     },
     receiveKey: function (key, touchStatus) {
       this.letter = key
@@ -71,6 +75,10 @@ export default {
     isTouch: function (touchStatus) {
       this.touchStatus = touchStatus
     }
+  },
+  created () {
+    // $loading为全局引入element.UI后注册在Vue.prototype的方法
+    this.getCityData()
   }
 }
 </script>

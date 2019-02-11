@@ -35,10 +35,18 @@ export default {
   props: {
     iconList: Array
   },
+  data () {
+    return {
+      optionSwiper: null
+    }
+  },
   methods: {
     getIconList () {
-      // eslint-disable-next-line
-      new Swiper('.option', {
+      if (this.optionSwiper) {
+        this.optionSwiper.updated()
+        return
+      }
+      this.optionSwiper = new Swiper('.option', {
         loop: false, // 循环模式选项
         autoplay: false, // 自动播放
         pagination: {

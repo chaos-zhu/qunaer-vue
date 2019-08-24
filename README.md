@@ -1,6 +1,6 @@
 # vue-qunaer
 
-> A Vue.js project
+> 仿去哪儿移动端页面demo
 
 ## Build Setup
 

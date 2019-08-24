@@ -12,7 +12,7 @@
       </keep-alive>
     </transition>
     <audio
-      src="/qunaer/static/mp3/gongxiami.mp3"
+      src="static/mp3/gongxiami.mp3"
       loop
       id="audio"
      >

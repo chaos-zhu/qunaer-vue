@@ -1,6 +1,6 @@
 <template>
   <div class="skeleton">
-    我是骨架屏
+    骨架屏Test...
     <div class="skeleton-nav"></div>
     <div class="skeleton-swiper"></div>
     <ul class="skeleton-tabs">

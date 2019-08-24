@@ -13,6 +13,8 @@ import Detail from '@/pages/detail/Detail'
 Vue.use(Router)
 
 var router = new Router({
+  mode: 'history',
+  base: 'qunaer',
   routes: [
     {
       path: '/',

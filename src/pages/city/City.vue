@@ -57,11 +57,13 @@ export default {
       this.loading = this.$loading({
         text: '城市数据首次加载较慢，先欣赏公虾米~'
       })
-      axios.get('//157.230.145.159:3000/city')
-        .then(this.getCityDataSucc)
+      // axios.get('//157.230.145.159:3000/city')
+      //   .then(this.getCityDataSucc)
+      let city = require('static/mock/city.json')
+      // console.log(city)
+      this.getCityDataSucc(city)
     },
-    getCityDataSucc: function (result) {
-      var res = result.data[0]
+    getCityDataSucc: function (res) {
       if (res.ret === true) {
         this.hotCities = res.data.hotCities
         this.cities = res.data.cities

@@ -14,7 +14,7 @@ Vue.use(Router)
 
 var router = new Router({
   mode: 'history',
-  base: 'qunaer',
+  // base: 'qunaer',
   routes: [
     {
       path: '/',

@@ -12,7 +12,7 @@
       </keep-alive>
     </transition>
     <audio
-      src="static/mp3/gongxiami.mp3"
+      src="http://qiniu.zhulijun.club/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E2%98%85%20%E5%90%AC%E5%A6%88%E5%A6%88%E7%9A%84%E8%AF%9D.mp3"
       loop
       id="audio"
      >

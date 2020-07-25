@@ -10,7 +10,6 @@
 
 <script>
 import { mapState } from 'vuex'
-// import axios from 'axios'
 export default {
   name: 'HomeHeader',
   data () {
@@ -28,12 +27,22 @@ export default {
   },
   methods: {
     getCityName () {
+      
       if (this.curCity === '定位中...') {
-        this.$jsonp('//api.map.baidu.com/location/ip?ak=30tm8wTH4b2COhbq7B7y65yVU6z1qIgU')
+        let url = `http://api.map.baidu.com/location/ip?ak=weoHOxlVl9VRvSGGL6LqYZDNvt1xlAIO&coor=bd09ll`
+        this.$jsonp(url)
           .then((res) => {
+            console.log(res)
             this.$store.commit('changeCity', res.content.address_detail.city)
             localStorage.curCity = this.curCity
           })
+
+        // 因为作用域的问题，这里的自定义jsonp跨域是无效的，getCityByJsonp无法被调用
+        // let script = document.createElement('script')
+        // script.type = 'text/javascript'
+        // script.src = url
+        // document.body.appendChild(script)
+      // let getCityByJsonp = function(res) {console.log(res)} // 因为作用域的问题，这里的方法是调不到的！！！
       }
     },
     musicTransfrom () {
@@ -59,7 +68,9 @@ export default {
     }
   },
   created () {
-    this.musicTransfrom()
+    setTimeout(() => {
+      this.musicTransfrom()
+    }, 500)
   },
   mounted () {
     this.getCityName()
